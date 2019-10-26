@@ -1,0 +1,314 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* margin: 0;
+    padding: 0; */
+    overflow-x: hidden;
+}
+
+.base {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    /* display: grid; */
+    /* grid-template-rows: auto 1fr auto; */
+}
+
+.header {
+    padding: 5px;
+    text-align: left;
+    background: #4749dd;
+    color: white;
+    font-size: 13px;
+}
+
+.page-footer {
+    text-align: center;
+    background-color: #dddddd;
+    height: 30px;
+    padding: 6px;
+    width: 100%;
+}
+
+.collapsible {
+    background-color: #949494;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    width: 75%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible-content {
+    display: none;
+    overflow: hidden;
+}
+
+.expand-arrow {
+    transform: rotate(90deg);
+}
+
+.selected {
+    /* box-shadow: 0 0 5px 5px #eef58b; */
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 2px rgba(0, 0, 0, 0.08);
+    background-color: #4749dd !important;
+}
+
+.color-button {
+    background-color: #ffffff;
+    border: #4749dd solid 2px;
+    border-radius: 8px;
+    color: black;
+    padding: 2px 12px;
+    padding-top: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.color-filter {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: solid 1px #555555;
+}
+
+.go-button {
+    background-color: #f44336;
+    /* Green */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 9px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.filter-row {
+    display: flex;
+    flex-flow: row wrap;
+    width: 95%;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.button {
+    background-color: #ffffff;
+    border: #4749dd solid 2px;
+    border-radius: 8px;
+    color: black;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 9pt;
+    margin: 4px 2px;
+    width: 70px;
+    -webkit-transition-duration: 0.3s;
+    /* Safari */
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.button:hover,
+.selected-button {
+    background-color: #4749dd;
+    color: white;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.card-frame {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 5px;
+    margin: 10px;
+    /* width: 20%; */
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 2px rgba(0, 0, 0, 0.08);
+    animation: createBox .25s;
+}
+
+.card-image {
+    max-width: 223px;
+    max-height: 311px;
+}
+
+@keyframes createBox {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.loader {
+    font-size: 10px;
+    margin: 50px auto;
+    text-indent: -9999em;
+    width: 11em;
+    height: 11em;
+    border-radius: 50%;
+    background: #4749dd;
+    background: -moz-linear-gradient(left, #4749dd 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, #4749dd 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, #4749dd 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, #4749dd 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, #4749dd 10%, rgba(255, 255, 255, 0) 42%);
+    position: relative;
+    -webkit-animation: load3 1.4s infinite linear;
+    animation: load3 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.loader:before {
+    width: 50%;
+    height: 50%;
+    background: #4749dd;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+}
+
+.loader:after {
+    background: #ffffff;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@-webkit-keyframes load3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes load2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 768px) {
+    .collapsible {
+        background-color: #949494;
+        color: white;
+        padding: 14px;
+        cursor: default;
+        width: 93%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 16px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .go-button {
+        background-color: #f44336;
+        /* Green */
+        border: none;
+        border-radius: 8px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 2px rgba(0, 0, 0, 0.08);
+    }
+    .collapsible-content {
+        display: block !important;
+        overflow: hidden;
+    }
+    .expand-arrow {
+        visibility: hidden;
+    }
+    .header {
+        padding: 8px;
+        text-align: left;
+        background: #4749dd;
+        color: white;
+        font-size: 16px;
+    }
+}

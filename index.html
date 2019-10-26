@@ -5,26 +5,63 @@
     <link rel="stylesheet" href="styles.css" />
     <title>MTG Card Viewer</title>
 </head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <div id='app'>
-        <button v-on:click="toggleColorFilter('white')">White</button>
-        <button v-on:click="toggleColorFilter('green')">Green</button>
-        <button v-on:click="toggleColorFilter('red')">Red</button>
-        <button v-on:click="toggleColorFilter('black')">Black</button>
-        <button v-on:click="toggleColorFilter('blue')">Blue</button>
-        <button v-on:click="getCards">GO</button>
-        <div v-if="loading">
-            <p>Loading...</p>
-        </div>
-        <div v-else>
-            <div v-for="card in cards">
-                <img :src="card.imageUrl">
+    <div class="base">
+        <div class="wrapper">
+            <div class="header">
+                <h3>MTG Card Viewer</h3>
+            </div>
+            <div id='app'>
+                <div class="row">
+                    <div class="collapsible" v-on:click="toggleFilters()">
+                        <span>Filters:</span>
+                        <img v-if="!expanded" src="images/svgs/keyboard_arrow_right-24px.svg" class="expand-arrow">
+                        <img v-if="expanded" src="images/svgs/keyboard_arrow_left-24px.svg" class="expand-arrow">
+                    </div>
+                    <button v-on:click="getCards" class="go-button">GO</button>
+                </div>
+
+                <div class="collapsible-content" id="filters">
+                    <div class="filter-row">
+                        <div v-for="c in colors" class="color-button" v-bind:class="{ selected: colorFilters.includes(c) }">
+                            <img class="color-filter" :src="getColorSVG(c)" v-on:click="toggleColorFilter(c)">
+                        </div>
+                        <!-- </div> -->
+                        <!-- <div class="filter-row"> -->
+                        <template v-for="type in cardTypes">
+                                    <span v-on:click="toggleTypeFilter(type)" class="button"  v-bind:class="{ 'selected-button': typeFilters.includes(type) }">{{type}}</span>
+                                </template>
+                    </div>
+                    <hr>
+                </div>
+
+
+                <div v-if="loading == 1">
+                    <div class="loader">Loading...</div>
+                </div>
+                <div v-if="loading == 0">
+                    <div class="row">
+                        <template v-for="card in cards">
+                                    <div v-if="card.imageUrl" class="card-frame">
+                                        <img :src="card.imageUrl" class="card-image">
+                                    </div>
+                                </template>
+                    </div>
+
+                </div>
+                <div v-else>
+
+                </div>
+
             </div>
         </div>
-
+        <footer class="page-footer"><a href="https://github.com/jpw547/mtg-card-viewer" target="_blank">Github</a></footer>
     </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
